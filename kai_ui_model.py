@@ -56,10 +56,20 @@ class ProductCategory:
         return self._category
 
 
-# Where to put order? model or controller as it is changing
-# @dataclass
-# class Order:
-#     _products: List[Product]
+@dataclass
+class Order:
+    _products: List[Product]
+
+    @property
+    def products(self) -> List[Product]:
+        return self._products
+
+    def add_product(self, product: Product) -> None:
+        self._products.append(product)
+
+    def remove_product(self, index: int) -> None:
+        del self._products[index]
+
 
 PRODUCTS = [
     ProductCategory(
